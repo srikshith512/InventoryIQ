@@ -1,0 +1,41 @@
+InventoryIQ Review Demo Checklist
+Target demo time: 1 minute 15 seconds
+
+Before review:
+1. Start backend:
+   & "C:\Users\srikshith rao\AppData\Local\Temp\inventoryiq-venv\Scripts\python.exe" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+
+2. Start frontend:
+   cd "C:\Users\srikshith rao\OneDrive\Projects\inventoryiq\frontend"
+   npm.cmd run dev -- --host 127.0.0.1
+
+3. Open:
+   http://127.0.0.1:5173
+
+Demo path:
+1. Command center
+   Show: KPI cards, value at risk, status/readiness.
+   Say: "This gives the planner an immediate inventory health summary."
+
+2. Inventory explorer
+   Click: Inventory Explorer.
+   Filter: SLOB watchlist or Below reorder point.
+   Open: Any high-risk SKU.
+   Say: "This connects the SKU's stock position with policy reorder logic."
+
+3. AI explanation
+   Click: Explain reorder point or Recommend action.
+   Say: "This is the LLM explanation layer. It converts SKU metrics and policy context into a plain-language decision."
+
+4. Supplier pulse
+   Click: Supplier Pulse.
+   Select: A supplier with high lead-time drift.
+   Say: "Supplier drift matters because reorder points depend on lead-time assumptions."
+
+5. Policy copilot
+   Click: Policy Copilot.
+   Ask: When is a SKU classified as obsolete?
+   Say: "This demonstrates the RAG part: the assistant answers from the indexed policy document."
+
+Final sentence:
+"InventoryIQ addresses PS117 by explaining reorder-point choices and flagging slow-moving or obsolete stock through analytics plus policy-grounded LLM RAG."

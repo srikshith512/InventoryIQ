@@ -1,0 +1,119 @@
+InventoryIQ - 10 Minute Review Preparation Script
+Target: 8 minutes presentation + 2 minutes questions
+
+Project problem statement:
+PS117 - Supply Chain & Logistics
+Design an inventory-policy assistant that explains reorder-point choices and flags slow-moving or obsolete stock.
+AI Focus: LLM RAG
+
+Timing plan:
+0:00-0:45  Slide 1 - Project title
+0:45-1:45  Slide 2 - Problem statement and relevance
+1:45-2:45  Slide 3 - Objectives
+2:45-3:45  Slide 4 - Literature survey and gap
+3:45-4:50  Slide 5 - Proposed methodology
+4:50-5:55  Slide 6 - Implementation progress
+5:55-6:45  Slide 7 - Expected outcomes
+6:45-8:00  Slide 8 - Demonstration
+8:00-10:00 Questions
+
+Slide 1 - Project title
+Script:
+Good morning. My project is InventoryIQ, based on problem statement PS117 under Supply Chain and Logistics. The problem statement asks us to design an inventory-policy assistant that explains reorder-point choices and flags slow-moving or obsolete stock. My AI focus is LLM RAG, so the main idea is not just to show dashboard numbers, but to explain inventory decisions using policy documents and SKU-level data.
+
+Transition:
+First, I will explain why this problem matters in supply-chain operations.
+
+Slide 2 - Problem statement and relevance
+Script:
+In inventory planning, reorder points, supplier lead times, safety stock, and obsolete-stock rules are usually stored separately from the actual SKU data. Because of that, planners may see that a SKU is risky, but they may not immediately know why it is risky or what policy rule applies. This is especially important for slow-moving and obsolete inventory because it blocks working capital and can lead to write-down decisions. The project solves this by linking inventory metrics with policy-grounded explanations.
+
+Transition:
+From that problem, I defined four project objectives.
+
+Slide 3 - Objectives
+Script:
+The first objective is to explain reorder-point choices by comparing policy ROP, recommended ROP, stock level, and lead-time drift. The second is to flag slow-moving and obsolete inventory using anomaly detection and policy rules. The third is to answer policy questions using retrieval-augmented generation, so the answer is based on the inventory policy document. The fourth is to provide a usable web dashboard where a planner can search SKUs, inspect exceptions, and ask the AI assistant for explanations.
+
+Transition:
+Before implementing this, I looked at three areas in the literature and existing approaches.
+
+Slide 4 - Literature survey and gap
+Script:
+The first area is inventory control, especially reorder point, safety stock, service levels, and supplier lead time. These methods explain how much inventory should be kept and when replenishment should happen. The second area is anomaly detection, where models such as Isolation Forest can help identify unusual inventory movement patterns. The third area is RAG systems, where a retriever first finds relevant document context and then an LLM generates an answer. The gap I identified is that many systems either show inventory analytics or provide generic AI chat, but they do not combine SKU analytics, anomaly detection, and policy-grounded explanations in one workflow.
+
+Transition:
+The proposed methodology combines these parts into one end-to-end system.
+
+Slide 5 - Proposed methodology
+Script:
+The system starts with inventory data containing 500 synthetic SKUs. Then the analytics layer computes compliance, reorder risk, supplier lead-time drift, and SLOB status. The anomaly-scoring workflow uses NVIDIA RAPIDS cuML. The policy document is ingested into a ChromaDB vector store using NVIDIA NeMo Retriever embeddings. During question-answering, the system retrieves relevant policy chunks and uses NVIDIA NIM to generate the final explanation. The frontend is built in React and the backend is built with FastAPI, so the NVIDIA API key remains on the server side.
+
+Transition:
+Now I will show what has been completed so far.
+
+Slide 6 - Implementation progress
+Script:
+The current prototype is working locally. It has 500 SKUs loaded into SQLite, 95 SKUs flagged as slow-moving or obsolete, an average compliance score of 73.4 percent, and 185 SKUs below reorder point. The approximate SLOB value at risk is 84.8 lakh rupees. The completed modules include the synthetic dataset, database setup, RAG policy ingestion, FastAPI endpoints, and a React website. The system also includes fallback handling, so the dashboard remains useful even if an AI service is temporarily unavailable.
+
+Transition:
+These completed parts support the expected project outcomes.
+
+Slide 7 - Expected outcomes
+Script:
+The expected operational outcome is that a planner can understand not only which SKUs need attention, but why they need attention. The system should support explainable reorder-point review, faster SLOB identification, supplier drift visibility, and policy compliance monitoring. Technically, the outcome is a deployable web architecture with RAG over inventory policy documents, NVIDIA-backed explanation generation, and a clean user interface for decision support.
+
+Transition:
+I will now demonstrate the working prototype briefly.
+
+Slide 8 - Demonstration
+Demo script:
+Open the website at http://127.0.0.1:5173.
+
+Step 1 - Command center:
+Show the top KPI cards. Say:
+This is the command center. It summarizes total SKUs, compliance, below-reorder-point count, obsolete stock, and total value at risk. This gives the planner an immediate overview of inventory health.
+
+Step 2 - Inventory explorer:
+Go to Inventory Explorer. Filter to SLOB watchlist or below reorder point. Open one SKU. Say:
+Here I can search and filter SKU-level exceptions. When I open a SKU, I can compare current stock, policy reorder point, recommended reorder point, and compliance score.
+
+Step 3 - AI explanation:
+Click "Explain reorder point" or "Recommend action". Say:
+This is the assistant part. It uses SKU data and policy context to explain the decision in plain language, instead of only showing a number.
+
+Step 4 - Supplier pulse:
+Open Supplier Pulse. Select a supplier with high drift. Say:
+This view shows lead-time drift. If actual supplier lead time is higher than policy lead time, reorder-point assumptions may become unsafe.
+
+Step 5 - Policy copilot:
+Open Policy Copilot and ask:
+When is a SKU classified as obsolete?
+Say:
+The answer is grounded in the indexed policy document. This demonstrates the LLM RAG part of the problem statement.
+
+Closing line:
+So InventoryIQ addresses PS117 by combining inventory analytics with an LLM RAG assistant that explains reorder-point choices and flags slow-moving or obsolete stock.
+
+Likely questions and short answers:
+
+Q: Why did you use RAG instead of only an LLM?
+A: Because inventory policy answers must be grounded in the actual policy document. RAG retrieves relevant policy context before generation, which reduces generic or unsupported answers.
+
+Q: Where is NVIDIA used?
+A: RAPIDS cuML is used for anomaly scoring, NeMo Retriever is used for policy embeddings and retrieval, and NVIDIA NIM is used for generated explanations and policy Q&A.
+
+Q: What is SLOB?
+A: SLOB means slow-moving and obsolete stock. In this project, slow-moving items are identified by low sales velocity and anomaly signals, while obsolete stock follows policy rules such as no movement for 90 or more days.
+
+Q: What is the main innovation?
+A: The main value is combining SKU-level analytics with policy-grounded natural-language explanations. It is not only a dashboard and not only a chatbot.
+
+Q: Is the data real?
+A: For this review, the project uses synthetic inventory data with 500 SKUs so the full workflow can be demonstrated safely. The same pipeline can be connected to real inventory data later.
+
+Q: What is left to do?
+A: Final polishing includes deployment, improving the policy document set, adding authentication if needed, and testing with larger or real datasets.
+
+Q: What happens if the NVIDIA API is unavailable?
+A: The operational dashboard still works from SQLite, and the backend returns fallback explanations. AI-powered policy responses become fully available when the NVIDIA API key and services are configured.

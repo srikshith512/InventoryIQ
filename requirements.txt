@@ -1,0 +1,33 @@
+# InventoryIQ — Requirements
+# Install: pip install -r requirements.txt
+
+# Core
+pandas==2.2.2
+numpy==1.26.4
+python-dotenv==1.0.1
+
+# Database
+# sqlite3 is built into Python — no install needed
+
+# RAG & Embeddings
+chromadb==0.5.3
+posthog<4               # chromadb 0.5.x telemetry expects the older PostHog API
+openai==1.35.7          # used for NVIDIA NeMo + NIM (OpenAI-compatible API)
+httpx<0.28             # openai 1.35.x still uses the older httpx proxies API
+langchain==0.2.6
+langchain-community==0.2.6
+pypdf==4.2.0
+
+# Dashboard
+streamlit==1.36.0
+plotly==5.22.0
+
+# ML (local fallback when Colab not used)
+scikit-learn==1.5.0
+
+# Data generation
+faker==25.9.2
+
+# React web API
+fastapi==0.115.6
+uvicorn[standard]==0.34.0

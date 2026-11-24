@@ -1,0 +1,233 @@
+INVENTORYIQ — STANDARD INVENTORY POLICY DOCUMENT
+Version 2.1 | Effective Date: January 1, 2024
+Department: Supply Chain & Planning
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. PURPOSE & SCOPE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This document defines the standard inventory management policies applicable
+to all stock-keeping units (SKUs) across all warehouses. It governs reorder
+points, safety stock levels, minimum order quantities, lead times, and the
+identification and treatment of slow-moving and obsolete inventory.
+
+All planning and procurement staff are required to follow this policy.
+Deviations must be approved in writing by the Supply Chain Manager.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. REORDER POINT (ROP) POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2.1 Definition
+The Reorder Point (ROP) is the inventory level at which a replenishment
+order must be placed to avoid a stockout before the next delivery arrives.
+
+2.2 Standard Formula
+ROP = (Average Daily Demand × Policy Lead Time in Days) + Safety Stock
+
+Where:
+  - Average Daily Demand  = Total units sold in last 90 days ÷ 90
+  - Policy Lead Time      = Agreed lead time with supplier (in days)
+  - Safety Stock          = Buffer stock to cover demand variability
+
+2.3 Service Level Targets by E-Grocery Category
+  - Fresh Produce:         99% service level (z-score = 2.33)
+  - Dairy:                 99% service level (z-score = 2.33)
+  - Meat:                  99% service level (z-score = 2.33)
+  - Seafood:               99% service level (z-score = 2.33)
+  - Bakery:                98% service level (z-score = 2.05)
+  - Frozen:                97% service level (z-score = 1.88)
+  - Beverages:             95% service level (z-score = 1.65)
+  - Pantry:                95% service level (z-score = 1.65)
+  - Personal Care:         95% service level (z-score = 1.65)
+  - Household:             90% service level (z-score = 1.28)
+
+Perishable categories must be reviewed with higher priority because service
+failures can create both stockout risk and expiry/write-off risk.
+
+2.4 ROP Review Frequency
+  - High-velocity items (>100 units/month): Monthly review
+  - Medium-velocity items (10–100 units/month): Quarterly review
+  - Low-velocity items (<10 units/month): Semi-annual review
+
+2.5 Lead Time Deviation Policy
+If actual supplier lead time deviates from the agreed policy lead time by
+more than 20%, the reorder point MUST be recalculated using the actual
+observed lead time. Procurement must notify the supplier of the SLA breach
+within 5 business days.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. SAFETY STOCK POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3.1 Standard Safety Stock Formula
+Safety Stock = Z × σ_demand × √Lead Time
+
+Where:
+  - Z              = Service level z-score (see Section 2.3)
+  - σ_demand       = Standard deviation of daily demand (last 90 days)
+  - Lead Time      = Policy lead time in days
+
+3.2 Minimum Safety Stock
+Safety stock must not fall below 15% of the policy reorder point for any
+active SKU, regardless of demand variability.
+
+3.3 Safety Stock Override
+Category managers may increase (but not decrease) safety stock by up to
+50% above the formula output for seasonal or strategic items.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. MINIMUM ORDER QUANTITY (MOQ) POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4.1 All purchase orders must meet the supplier-agreed MOQ.
+
+4.2 If the calculated replenishment quantity falls below MOQ, the order
+    must be rounded up to the nearest MOQ multiple.
+
+4.3 MOQ exceptions require written approval from the procurement lead and
+    will typically incur a premium charge from the supplier.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. SLOW-MOVING INVENTORY POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5.1 Definition
+A SKU is classified as SLOW-MOVING if its average monthly sales velocity
+falls below 10 units per month over a rolling 3-month period.
+
+5.2 Identification
+Slow-moving SKUs must be identified through automated velocity analysis
+at least monthly. All slow-movers must be flagged in the planning system.
+
+5.3 Required Actions for Slow-Movers
+Upon identification, the category manager must within 30 days:
+  (a) Review the commercial reason for the low velocity (e.g., seasonal,
+      discontinued product, pricing issue, or demand shift)
+  (b) Choose one of the following actions:
+      - PROMOTE: Launch a clearance promotion or bundle offer
+      - RETURN: Negotiate return to supplier under the return agreement
+      - REPOSITION: Transfer to a warehouse with higher demand
+      - HOLD: Document business reason and set a review date (max 60 days)
+
+5.4 Replenishment Freeze
+No new purchase orders may be placed for a SLOW-MOVING SKU without explicit
+written approval from the Supply Chain Manager.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. OBSOLETE INVENTORY POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6.1 Definition
+A SKU is classified as OBSOLETE if it meets ANY of the following criteria:
+  (a) No stock movement (zero units issued or sold) for 90 or more
+      consecutive calendar days.
+  (b) The product has been formally discontinued by the manufacturer.
+  (c) The SKU has been superseded by a replacement model and the old
+      model has had no movement for 60+ days.
+
+6.2 Mandatory Actions Timeline
+  Day 0:   Obsolescence flag raised by system or planner.
+  Day 1–7: Category manager must confirm the classification.
+  Day 8–30: Finance must calculate the book value and provision requirement.
+  Day 31–60: One of the following disposal actions must be initiated:
+             - WRITE-DOWN: Reduce book value; sell at discount
+             - WRITE-OFF: Zero the asset; dispose or destroy
+             - SUPPLIER RETURN: Initiate return under warranty/return clause
+             - DONATION: For eligible categories (e.g., Pharmaceuticals
+               within expiry date)
+
+6.3 Provisioning
+Finance must raise a provision equal to 100% of the inventory book value
+for any SKU classified as OBSOLETE within 30 days of classification.
+
+6.4 No Replenishment
+Absolutely no purchase orders may be raised for an OBSOLETE SKU.
+Any such order requires VP Supply Chain approval.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. POLICY COMPLIANCE MONITORING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+7.1 Compliance Score
+Each SKU is assigned a Policy Compliance Score (0–100) computed monthly.
+A score below 60 triggers a mandatory review. A score below 40 requires
+escalation to the Supply Chain Manager within 5 business days.
+
+7.2 Lead-Time Drift Monitoring
+Supplier lead-time performance is reviewed monthly. Any supplier whose
+average actual lead time exceeds the agreed lead time by more than 20%
+for two consecutive months is placed on a Supplier Watch List.
+
+7.3 Reporting
+  - Monthly: Full compliance report to Supply Chain Manager
+  - Quarterly: SLOB summary to Finance Director
+  - Annually: Full policy review and update
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. SUPPLIER LEAD TIME POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+8.1 All supplier lead times are agreed at the start of each contract year
+    and stored as the Policy Lead Time in the planning system.
+
+8.2 Actual lead times are measured from Purchase Order date to Goods
+    Receipt date and recorded in the system for every delivery.
+
+8.3 Acceptable variance: Actual lead time may be up to +10% of policy
+    lead time without triggering a review.
+
+8.4 Breach thresholds:
+  - 11–20% over policy lead time: Yellow flag — monitor next 2 deliveries
+  - 21–50% over policy lead time: Orange flag — formal supplier review
+  - >50% over policy lead time:   Red flag — escalate to procurement head;
+                                  consider emergency sourcing
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. E-GROCERY EXPIRY AND FEFO POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+9.1 FEFO Requirement
+Perishable SKUs must be picked, replenished, and rotated using FEFO
+(First Expired, First Out). FEFO applies to Fresh Produce, Dairy, Meat,
+Seafood, Bakery, and Frozen categories unless a category manager documents
+an approved exception.
+
+9.2 Expiry Risk Flags
+Any SKU within 7 calendar days of expiry must be flagged for urgent action.
+The category manager must choose one of the following actions:
+  - PROMOTE: Launch markdown, bundle, or clearance activity
+  - TRANSFER: Move stock to a warehouse or store with higher near-term demand
+  - RETURN: Negotiate supplier return where contract terms allow
+  - WRITE-DOWN: Start finance review for reduced recoverable value
+
+Expired SKUs must not be sold, replenished, or counted as available stock.
+
+9.3 Stock Age Review
+Stock age must be reviewed weekly for perishable SKUs and monthly for
+non-perishable SKUs. High stock age combined with low sales velocity should
+be treated as an early warning for SLOB classification.
+
+9.4 Inventory Status Rules
+Items marked Low Stock, Out of Stock, Overstock, Damaged, or Expiry Risk
+must be included in the monthly compliance review. Damaged or expired stock
+must be excluded from reorder-point availability calculations.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+10. GLOSSARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROP      Reorder Point — stock level triggering a new purchase order
+MOQ      Minimum Order Quantity — smallest quantity supplier will accept
+SLOB     Slow-Moving and Obsolete Stock
+SKU      Stock-Keeping Unit — unique product identifier
+SLA      Service Level Agreement — agreed lead time with supplier
+z-score  Statistical factor corresponding to a desired service level
+FEFO     First Expired, First Out — stock rotation by earliest expiry date
+FIFO     First In, First Out — stock rotation by earliest receipt date
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Document Owner:  Supply Chain Planning Team
+Last Reviewed:   September 2026
+Next Review:     September 2027
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
